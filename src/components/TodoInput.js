@@ -20,6 +20,7 @@ function TodoInput(props) {
         }}
         onKeyDown={handleEnterPress}
       />
+      
       <button className="add-btn" 
       onClick={()=>{
         props.addList(inputText)
