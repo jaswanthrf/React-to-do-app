@@ -78,7 +78,21 @@ body{
 }
 
 .green {
-  background-color: green;
+  background-color: #40c85b;
+}
+
+.black {
+  background-color: black;
+}
+
+.check-box i{
+  margin: 4px;
+  font-size: large;
+  cursor: pointer;
+  transition: 0.1s;   
+}
+.check-box i:hover{
+  transform: scale(1.2);  
 }
 .icons{
   position: absolute;

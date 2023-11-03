@@ -24,7 +24,12 @@ function Todolist(props) {
   };
   
   return (
-    <li className={`list-item ${isClicked ? 'green' : 'black'}`} onClick={handleClick}>
+    <li className={`list-item ${isClicked ? 'green' : 'black'}`} >
+        <span className='check-box'>
+            <i className={`fa-regular fa-square ${isClicked ? 'fa-check' : ''}`}
+                onClick={handleClick}></i>
+        </span>
+        
       {isEditing ? (
         <div>
           <input

@@ -20,15 +20,9 @@ function App() {
   };
 
   const editListItem = (index, newText) => {
-    setEditIndex(-1);
-    setEditInitialText("");
     let updatedList = [...listTodo];
     updatedList[index] = newText;
     setListTodo(updatedList);
-  };
-
-  const handleCompleted = () => {
-    
   };
 
   return (
