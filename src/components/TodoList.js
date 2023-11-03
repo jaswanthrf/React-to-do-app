@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function Todolist(props) {
   const [isEditing, setEditing] = useState(false);
   const [editedItem, setEditedItem] = useState(props.item);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleEditClick = () => {
     setEditing(true);
@@ -18,8 +19,12 @@ function Todolist(props) {
     setEditedItem(props.item);
   };
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+  
   return (
-    <li className={`list-item`}>
+    <li className={`list-item ${isClicked ? 'green' : 'black'}`} onClick={handleClick}>
       {isEditing ? (
         <div>
           <input

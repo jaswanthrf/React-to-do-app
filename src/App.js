@@ -27,10 +27,15 @@ function App() {
     setListTodo(updatedList);
   };
 
+  const handleCompleted = () => {
+    
+  };
+
   return (
     <div className="main-container">
       <div className="center-container">
         <TodoInput addList={addList} />
+        <br></br>
         <h1 className="app-heading">TODO LIST</h1>
         <hr />
         {listTodo.map((listItem, i) => (
