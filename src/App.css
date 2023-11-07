@@ -18,7 +18,7 @@ body{
 .app-heading{
   padding: 4px;
   color: white;  
-  /* text-align: center; */
+  text-align: center;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-transform: uppercase;
 }
@@ -166,4 +166,36 @@ body{
 }
 .edit-btn1:hover {
   background-color: #45a049;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-buttons button {
+  background-color: black; 
+  color: #fff;
+  border: 1px solid white; 
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.tab-buttons button.active-tab {
+  background-color: #40c85b; 
+}
+
+.tab-buttons button:hover {
+  background-color: #40c85b; 
+  color: #fff;
+}
+
+
+.white-text-times-new-roman {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
 }
