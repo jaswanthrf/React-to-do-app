@@ -9,6 +9,7 @@ function App() {
   const [editIndex, setEditIndex] = useState();
   const [editInitialText, setEditInitialText] = useState('');
   const [completedList, setCompletedList] = useState([]);
+  const [activeTab, setActiveTab] = useState('todo');
 
   const addList = (inputText) => {
     if (inputText !== "")
@@ -60,41 +61,71 @@ function App() {
     <div className="main-container">
       <div className="center-container">
         <div className="column">
-          
-          <TodoInput addList={addList} />
-          <br />
-          <h1 className="app-heading">TODO LIST</h1>
-          <hr />
-          {listTodo.map((listItem, i) => (
-            <Todolist
-              key={i}
-              index={i}
-              item={listItem}
-              deleteItem={deleteListItem}
-              editItem={editListItem}
-              isEditing={i === editIndex}
-              initialText={i === editIndex ? editInitialText : ''}
-              setEditIndex={setEditIndex}
-              setEditInitialText={setEditInitialText}
-              moveTaskToCompleted={moveTaskToCompleted}
-            />
-            ))}
-        </div>
-        <br />
-        <div className="column">
-          <h1 className="app-heading">Completed</h1>
-          <hr />
-          <ul>
-            {completedList.map((listItem, i) => (
-              <CompletedList
-                key={i}
-                index={i}
-                item={listItem}
-                deleteItem={deleteCompletedItem}
-                moveTaskToTodo={moveTaskToTodo}
-              />
-            ))}
-          </ul>
+          <div className="tab-buttons">
+            <button
+              className={activeTab === 'todo' ? 'active-tab' : ''}
+              onClick={() => setActiveTab('todo')}
+            >
+              Todo
+            </button>
+            <button
+              className={activeTab === 'completed' ? 'active-tab' : ''}
+              onClick={() => setActiveTab('completed')}
+            >
+              Completed
+            </button>
+          </div>
+
+          {activeTab === 'todo' && (
+            <div>
+              <TodoInput addList={addList} />
+              <br />
+              <h1 className="app-heading">TODO LIST</h1>
+              <hr />
+              <br/>
+              {listTodo.length === 0 ? (
+                <p className="white-text-times-new-roman">No tasks in the Todo list.</p>
+              ) : (
+                listTodo.map((listItem, i) => (
+                  <Todolist
+                    key={i}
+                    index={i}
+                    item={listItem}
+                    deleteItem={deleteListItem}
+                    editItem={editListItem}
+                    isEditing={i === editIndex}
+                    initialText={i === editIndex ? editInitialText : ''}
+                    setEditIndex={setEditIndex}
+                    setEditInitialText={setEditInitialText}
+                    moveTaskToCompleted={moveTaskToCompleted}
+                  />
+                ))
+              )}
+            </div>
+          )}
+
+          {activeTab === 'completed' && (
+            <div>
+              <h1 className="app-heading">Completed</h1>
+              <hr />
+              <br />
+              {completedList.length === 0 ? (
+                <p className="white-text-times-new-roman">No tasks in the Completed list.</p>
+              ) : (
+                <ul>
+                  {completedList.map((listItem, i) => (
+                    <CompletedList
+                      key={i}
+                      index={i}
+                      item={listItem}
+                      deleteItem={deleteCompletedItem}
+                      moveTaskToTodo={moveTaskToTodo}
+                    />
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
